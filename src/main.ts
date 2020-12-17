@@ -31,7 +31,7 @@ async function run(): Promise<void> {
         )
       }
       
-      function profileToExtension(type)
+      function profileToExtension(type: string)
       {
       if(type === 'MAC_APP_DEVELOPMENT' ||
          type === 'MAC_APP_STORE' ||

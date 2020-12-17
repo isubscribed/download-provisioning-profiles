@@ -31,7 +31,7 @@ async function run(): Promise<void> {
         )
       }
       
-      function profileToExtension(type: string)
+      function profileToExtension(type)
       {
       if(type === 'MAC_APP_DEVELOPMENT' ||
          type === 'MAC_APP_STORE' ||
@@ -42,7 +42,7 @@ async function run(): Promise<void> {
       return 'mobileprovision'
       }
 
-      const profileFilename = `${profile.attributes.uuid}.provisionprofile`
+      const profileFilename = `${profile.attributes.uuid}.${profileToExtension(profile.attributes.profileType)}`
       const basePath = path.join(
         process.env['HOME'],
         '/Library/MobileDevice/Provisioning Profiles'

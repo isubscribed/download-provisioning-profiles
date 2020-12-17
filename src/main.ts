@@ -30,19 +30,21 @@ async function run(): Promise<void> {
           'Profile attributes `uuid` and `profileContent` must be defined!'
         )
       }
-      
-      function profileToExtension(type)
-      {
-      if(type === 'MAC_APP_DEVELOPMENT' ||
-         type === 'MAC_APP_STORE' ||
-         type === 'MAC_APP_DIRECT')
-      {
-        return 'provisionprofile'
-      }
-      return 'mobileprovision'
+
+      function profileToExtension(type: string | undefined) {
+        if (
+          type === 'MAC_APP_DEVELOPMENT' ||
+          type === 'MAC_APP_STORE' ||
+          type === 'MAC_APP_DIRECT'
+        ) {
+          return 'provisionprofile'
+        }
+        return 'mobileprovision'
       }
 
-      const profileFilename = `${profile.attributes.uuid}.${profileToExtension(profile.attributes.profileType)}`
+      const profileFilename = `${profile.attributes.uuid}.${profileToExtension(
+        profile.attributes.profileType
+      )}`
       const basePath = path.join(
         process.env['HOME'],
         '/Library/MobileDevice/Provisioning Profiles'

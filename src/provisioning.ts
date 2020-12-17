@@ -1,14 +1,8 @@
 import {v1} from 'appstoreconnect'
 import jwt from 'jsonwebtoken'
-import {
-  Profile,
-  ProfileAttributes
-} from 'appstoreconnect/dist/v1/routes/provisioning/profiles/types'
+import {Profile} from 'appstoreconnect/dist/v1/routes/provisioning/profiles/types'
 
-function isActiveProfile(
-  attributes: ProfileAttributes,
-  type?: string
-): boolean {
+function isActiveProfile(attributes: any, type?: string): boolean {
   return (
     attributes.profileState === 'ACTIVE' &&
     (type ? attributes.profileType === type : true)
